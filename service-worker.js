@@ -1,6 +1,6 @@
 const CACHE_NAME = 'scythe-cache-v1';
 const urlsToCache = [
-    '/',
+    '/scythe-app/',
     '/scythe-app/index.html',
     '/scythe-app/styles.css',
     '/scythe-app/app.js',
