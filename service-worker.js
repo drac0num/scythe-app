@@ -1,12 +1,12 @@
 const CACHE_NAME = 'scythe-cache-v1';
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.json',
-    '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png'
+    '/scythe-app/index.html',
+    '/scythe-app/styles.css',
+    '/scythe-app/app.js',
+    '/scythe-app/manifest.json',
+    '/scythe-app/icon-192.png',
+    '/scythe-app/icon-512.png'
 ];
 
 // Installations-Event
