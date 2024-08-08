@@ -1,7 +1,7 @@
 // Registrierung des Service Workers
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+        navigator.serviceWorker.register('/scythe-app/service-worker.js').then(function(registration) {
             console.log('Service Worker registriert mit Scope:', registration.scope);
         }).catch(function(error) {
             console.log('Service Worker Registrierung fehlgeschlagen:', error);
