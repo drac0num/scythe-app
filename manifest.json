@@ -1,7 +1,7 @@
 {
     "name": "Scythe Spielvorbereitung",
     "short_name": "Scythe",
-    "start_url": "/",
+    "start_url": "/scythe-app/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#007bff",
