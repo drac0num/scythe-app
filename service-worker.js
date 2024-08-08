@@ -1,47 +1,53 @@
-const CACHE_NAME = 'scythe-app-cache-v1';
+const CACHE_NAME = 'scythe-cache-v1';
 const urlsToCache = [
     '/',
     '/index.html',
     '/styles.css',
     '/app.js',
-    '/icon-192.png',
-    '/icon-512.png'
+    '/manifest.json',
+    '/icons/icon-192x192.png',
+    '/icons/icon-512x512.png'
 ];
 
-self.addEventListener('install', function(event) {
+// Installations-Event
+self.addEventListener('install', event => {
+    console.log('Service Worker: Installieren');
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(function(cache) {
-                console.log('Cache geöffnet');
+            .then(cache => {
+                console.log('Service Worker: Caching files');
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
-            .then(function(response) {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
-            }
-        )
-    );
-});
-
-self.addEventListener('activate', function(event) {
-    const cacheWhitelist = [CACHE_NAME];
+// Aktivierungs-Event
+self.addEventListener('activate', event => {
+    console.log('Service Worker: Aktivieren');
     event.waitUntil(
-        caches.keys().then(function(cacheNames) {
+        caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames.map(function(cacheName) {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Service Worker: Löschen alter Cache', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
             );
         })
+    );
+});
+
+// Fetch-Event
+self.addEventListener('fetch', event => {
+    console.log('Fetch-Event:', event.request.url);
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    return response; // Antwort aus dem Cache zurückgeben
+                }
+                return fetch(event.request); // Netzwerkanfrage durchführen
+            })
     );
 });
