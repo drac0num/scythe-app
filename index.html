@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scythe Spielvorbereitung</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Scythe Spielvorbereitung</h1>
+        <form id="player-form">
+            <label for="player-count">Anzahl der Spieler:</label>
+            <select id="player-count" name="player-count">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <button type="submit">Generieren</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
